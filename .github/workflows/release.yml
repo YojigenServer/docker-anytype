@@ -35,14 +35,15 @@ jobs:
         - name: 'Build Image'
           run: |
             TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ANYTYPE_VERSION=$(git describe --tags | sed 's/^v//')
             VERSION=$(git describe --tags | sed 's/^v//')
-            docker build . --build-arg ANYTYPE_VERSION=$VERSION -t $TAG:latest
+            docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:latest
             docker push $TAG:latest
-            docker build . --build-arg ANYTYPE_VERSION=$VERSION -t $TAG:$VERSION
+            docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:$VERSION
             docker push $TAG:$VERSION
             VERSION=$(echo "$VERSION" | cut -d "." -f 1,2)
-            docker build . --build-arg ANYTYPE_VERSION=$VERSION -t $TAG:$VERSION
+            docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:$VERSION
             docker push $TAG:$VERSION
             VERSION=$(echo "$VERSION" | cut -d "." -f 1,1)
-            docker build . --build-arg ANYTYPE_VERSION=$VERSION -t $TAG:$VERSION
+            docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:$VERSION
             docker push $TAG:$VERSION
