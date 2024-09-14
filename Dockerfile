@@ -31,7 +31,7 @@ RUN \
     libsecret-1-0 \
     libsecret-common \
     fonts-wqy-zenhei && \
-    curl "https://github.com/anyproto/anytype-ts/releases/download/v${ANYTYPE_VERSION}/anytype_${ANYTYPE_VERSION}_amd64.deb" -O "anytype_${ANYTYPE_VERSION}_amd64.deb" && \
+    curl -fsSL "https://github.com/anyproto/anytype-ts/releases/download/v${ANYTYPE_VERSION}/anytype_${ANYTYPE_VERSION}_amd64.deb" -o "anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     dpkg -i "/tmp/anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     echo "**** cleanup ****" && \
     apt-get clean && \
