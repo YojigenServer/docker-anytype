@@ -14,7 +14,7 @@
 
 ```docker
 services:
-  homepage:
+  anytype:
     image: ghcr.io/yojigenserver/anytype:latest
     container_name: AnyType
     privileged: true
