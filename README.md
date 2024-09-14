@@ -10,7 +10,11 @@
  - 已安装Docker环境
  - 支持设置macvlan
 
-### docker-compose.yaml
+### docker-compose使用方式
+
+需要添加一个macvlan网卡，并且设置和其他客户端使用设备相同网段。
+
+PUID和PGID用于控制产生的文件的用户权限。
 
 ```docker
 services:
@@ -33,6 +37,3 @@ networks:
   macvlan:
     external: true
 ```
-
-需要添加一个macvlan网卡，并且设置和其他客户端使用设备相同网段。
-PUID和PGID用于控制产生的文件的用户权限。
