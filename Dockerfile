@@ -33,7 +33,7 @@ RUN \
     libgtk-3-common \
     librsvg2-common \
     libsecret-1-0 \
-    libsecret-common \
+    libsecret-common && \
     curl -fsSL "https://github.com/anyproto/anytype-ts/releases/download/v${ANYTYPE_VERSION}/anytype_${ANYTYPE_VERSION}_amd64.deb" -o "/tmp/anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     dpkg -i "/tmp/anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     echo "**** cleanup ****" && \
