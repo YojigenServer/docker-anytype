@@ -2,6 +2,10 @@ FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
 
 # title
 ENV TITLE=AnyType
+ENV LC_ALL=zh_CN.UTF-8
+ENV INSTALL_PACKAGES=font-noto-cjk
+ENV CUSTOM_PORT=80
+ENV FM_HOME=/config/.config/anytype
 
 ARG ANYTYPE_VERSION=0.42.8
 
@@ -30,7 +34,6 @@ RUN \
     librsvg2-common \
     libsecret-1-0 \
     libsecret-common \
-    fonts-wqy-zenhei && \
     curl -fsSL "https://github.com/anyproto/anytype-ts/releases/download/v${ANYTYPE_VERSION}/anytype_${ANYTYPE_VERSION}_amd64.deb" -o "/tmp/anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     dpkg -i "/tmp/anytype_${ANYTYPE_VERSION}_amd64.deb" && \
     echo "**** cleanup ****" && \
@@ -44,5 +47,5 @@ RUN \
 COPY /root /
 
 # ports and volumes
-EXPOSE 3000
+EXPOSE 80
 VOLUME /config/.config/anytype
