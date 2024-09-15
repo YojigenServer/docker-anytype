@@ -44,6 +44,3 @@ jobs:
             VERSION=$(echo "$VERSION" | cut -d "." -f 1,2)
             docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:$VERSION
             docker push $TAG:$VERSION
-            VERSION=$(echo "$VERSION" | cut -d "." -f 1,1)
-            docker build . --build-arg ANYTYPE_VERSION=$ANYTYPE_VERSION -t $TAG:$VERSION
-            docker push $TAG:$VERSION
